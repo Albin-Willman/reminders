@@ -1,37 +1,42 @@
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@task) do |f| %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :recurrance_type %><br>
+        <%= f.select :recurrance_type, options_for_select(Task.recurrance_types.collect { |s| [s[0].humanize, s[0]] }, selected: @task.recurrance_type), {} , class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :offset %><br>
+        <%= f.select :offset, options_for_select(@task.offsets, selected: @task.offset), {} , class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :frequenzy %><br>
+        <%= f.select :frequenzy, options_for_select(@task.frequenzies, selected: @task.frequenzy), {} , class: "form-control" %>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :offset %><br>
-    <%= f.number_field :offset %>
-  </div>
-  <div class="field">
-    <%= f.label :frequenzy %><br>
-    <%= f.number_field :frequenzy %>
-  </div>
-  <div class="field">
-    <%= f.label :recurrance_type %><br>
-    <%= f.number_field :recurrance_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
