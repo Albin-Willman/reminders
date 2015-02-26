@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :subscribers
+
   resources :tasks
-  root 'tasks#index'
+  root 'tasks#due_tasks'
 end
