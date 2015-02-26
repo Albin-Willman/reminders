@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
   end
 
   def due?(date)
-    return date.yday % frequenzy if day?
+    return (date.yday % frequenzy) == 0 if day?
     return due_week?(date)  if week?
     return due_month?(date) if month?
   end
@@ -27,13 +27,13 @@ class Task < ActiveRecord::Base
 
   private
 
-  def due_week?(date)
-    return false unless date.mon % frequenzy
-    (date.wday + 6) % 7 == offset
+  def due_month?(date)
+    return false unless (date.mon % frequenzy) == 0
+    date.mday - 1 == offset
   end
 
   def due_week?(date)
-    return false unless date.cweek % frequenzy
+    return false unless (date.cweek % frequenzy) == 0
     (date.wday + 6) % 7 == offset
   end
 end
