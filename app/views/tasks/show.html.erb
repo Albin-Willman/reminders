@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Offset:</strong>
+  <%= @task.offset %>
+</p>
+
+<p>
+  <strong>Frequenzy:</strong>
+  <%= @task.frequenzy %>
+</p>
+
+<p>
+  <strong>Recurrance type:</strong>
+  <%= @task.recurrance_type %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
