@@ -54,6 +54,18 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def login_submit
+    s = Subscriber.find_by(email: params[:email])
+    if s
+      session[:auth] = true
+      redirect_to root_path and return 
+    end
+    render action: :login
+  end
+
+  def login
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriber
