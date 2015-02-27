@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 
 gem 'mysql2', group: :development
 gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 gem 'uglifier', '>= 1.3.0'
 gem 'less-rails'
