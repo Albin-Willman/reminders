@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Start date</th>
       <th>Offset</th>
       <th>Frequenzy</th>
       <th>Recurrance type</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.description %></td>
+        <td><%= task.start_date.try(:to_date) %></td>
         <td><%= task.offset %></td>
         <td><%= task.frequenzy %></td>
         <td><%= task.recurrance_type %></td>
